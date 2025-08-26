@@ -35,3 +35,4 @@ This service is configured for deployment on Vercel, Railway, or similar platfor
 - Python 3.8+
 - FastAPI
 - Uvicorn ASGI server
+
