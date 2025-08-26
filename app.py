@@ -22,12 +22,20 @@ environment (e.g. Vite) without additional proxy configuration.
 # Instantiate the FastAPI application
 app = FastAPI(title="AquaSync API", description="API serving dummy sensor data for the AquaSync MVP", version="0.1.0")
 
-# Configure CORS to allow requests from all origins.
+# Configure CORS to allow requests from frontend origins
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=[
+        "https://aquasyncnodeweb-p2iht4um4-personal-d7db0365.vercel.app",
+        "https://*.vercel.app",  # Allow all Vercel preview deployments
+        "https://*.shreyasrk.com" # Allow all shreyasrk.com deployments
+        "http://localhost:3000",  # Local development
+        "http://localhost:5173",  # Vite dev server
+        "http://127.0.0.1:3000",
+        "http://127.0.0.1:5173"
+    ],
     allow_credentials=True,
-    allow_methods=["*"],
+    allow_methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allow_headers=["*"],
 )
 
